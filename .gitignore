@@ -15,7 +15,7 @@ debian
 *.deb
 *.rpm
 *.spec
-*.pkg.tar.xz
+*.pkg.tar*
 PKGBUILD
 ui_qt
 pixmaps_qt
