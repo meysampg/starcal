@@ -113,6 +113,12 @@ class IntegatedWindowList(BaseCalObj):
         BaseCalObj.onConfigChange(self, *a, **ka)
         self.onDateChange()
 
+def getGtkDefaultFont():
+    fontName = settings.get_property('gtk-font-name')
+    font = gfontDecode(fontName)
+    font[3] = max(5, font[3])
+    return font
+
 ####################################################
 
 windowList = IntegatedWindowList()
@@ -130,7 +136,7 @@ settings = gtk.settings_get_default()
 ## ui.timeout_repeat = settings.get_property('gtk-timeout-repeat') ## == 20 too small!! FIXME
 
 
-ui.initFonts(gfontDecode(settings.get_property('gtk-font-name')))
+ui.initFonts(getGtkDefaultFont())
 ui.fontDefaultInit = ui.fontDefault
 
 ###########
